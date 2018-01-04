@@ -70,7 +70,12 @@ def get_id(url):
     :return: Class of the appropriate module based on the regex that was found.  i.e. scanners.dlink
     """
 
-    r = requests.get(url)
+    try:
+        r = requests.get(url)
+    except requests.exceptions.ConnectionError:
+        print "Error: Failed to connect to " + url
+        return False
+
     if r.status_code != 200:
         print "Error: " + url + " returned status code " + str(r.status_code)
         return False
