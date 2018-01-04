@@ -5,8 +5,7 @@ import os
 import scanners
 
 # Hardcoded (will dynamic later)
-enable_brute_forcer = True
-ip_file = "/root/PycharmProjects/scanner/static/ips"
+ip_file = os.path.join(os.getcwd(), "static", "ips")
 
 
 def get_urls(infile):
