@@ -43,7 +43,7 @@ class Base(RouterBase):
 
 
     def __id_regex(self):
-        for i in globals().keys():
+        for i in globals():
             r = self.rex_to_func()
 
             if i.startswith(r):
@@ -88,7 +88,7 @@ class Generic(object):
             else:
                 break
 
-        if not (r.status_code == 200 and r.reason == "OK"):
+        if r.status_code != 200 or r.reason != "OK":
             return res
 
         if not re.search("<message>Not authorized</message>", r.text):

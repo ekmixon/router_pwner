@@ -12,7 +12,7 @@ def get_urls(infile):
     urls = []
 
     with open(infile) as f:
-        for line in f.readlines():
+        for line in f:
             u = line.strip().lower().rstrip("/")
 
             if not u.startswith("http"):
@@ -28,12 +28,12 @@ def get_bf_creds():
     pws = [""]
 
     with open(os.path.join(os.getcwd(), "conf", "usernames")) as f:
-        for i in f.readlines():
+        for i in f:
             if i.strip() not in uns:
                 uns.append(i.strip())
 
     with open(os.path.join(os.getcwd(), "conf", "passwords")) as f:
-        for i in f.readlines():
+        for i in f:
             if i.strip() not in pws:
                 pws.append(i.strip())
 
